@@ -49,17 +49,14 @@ namespace SortSpace
             {
                 if (step != 1)
                 {
-                    int imin = i;
-                    for (int k = i + 1; k < i + 1 + step; k++)
+                    int n = i + step;
+                    if (n > array.Length - 1) n = n % array.Length;
+                    if (array[n] < array[i])
                     {
-                        if (array[k] < array[imin])
-                        {
-                            imin = k;
-                        }
+                        int temp = array[i];
+                        array[i] = array[n];
+                        array[n] = temp;
                     }
-                    int temp = array[i];
-                    array[i] = array[imin];
-                    array[imin] = temp;
                 }
                 else
                 {
