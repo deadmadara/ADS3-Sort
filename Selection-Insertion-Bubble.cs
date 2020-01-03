@@ -47,40 +47,22 @@ namespace SortSpace
         {
             if (i >= 0 && i < array.Length && array != null)
             {
-                if (step != 1)
-                {
                     int iteration = i;
-                    List<int> temp = new List<int>();
+                    int k = 0;
+                    int[] temp = new int[(array.Length - i - 1) / step + 1];
                     while (iteration < array.Length)
                     {
-                        temp.Add(array[iteration]);
+                        temp[k++] = (array[iteration]);
                         iteration += step;
                     }
-                    temp.Sort();
+                    while (BubbleSortStep(temp));
+
                     iteration = i;
-                    for (int k = 0; k < temp.Count; k++)
+                    for (int n = 0; n < temp.Length; n++)
                     {
-                        array[iteration] = temp[k];
+                        array[iteration] = temp[n];
                         iteration += step;
-                    }
-                }
-                else
-                {
-                    int insert = i;
-                    for (int k = i - 1; k >= 0 ; k--)
-                    {
-                        if (array[i] < array[k])
-                        {
-                            insert = k;
-                        }
-                    }
-                    int temp = array[i];
-                    for (int k = i; k > insert; k--)
-                    {
-                        array[k] = array[k - 1];
-                    }
-                    array[insert] = temp;
-                }
+                    } 
             }
         }
     }
