@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace SortSpace
@@ -47,17 +47,37 @@ namespace SortSpace
         {
             if (i >= 0 && i < array.Length && array != null)
             {
-                int imin = i;
-                for (int k = i + 1; k < i + 1 + step; k++)
+                if (step != 1)
                 {
-                    if (array[k] < array[imin])
+                    int imin = i;
+                    for (int k = i + 1; k < i + 1 + step; k++)
                     {
-                        imin = k;
+                        if (array[k] < array[imin])
+                        {
+                            imin = k;
+                        }
                     }
+                    int temp = array[i];
+                    array[i] = array[imin];
+                    array[imin] = temp;
                 }
-                int temp = array[i];
-                array[i] = array[imin];
-                array[imin] = temp;
+                else
+                {
+                    int insert = i;
+                    for (int k = i - 1; k >= 0 ; k--)
+                    {
+                        if (array[i] < array[k])
+                        {
+                            insert = k;
+                        }
+                    }
+                    int temp = array[i];
+                    for (int k = i; k > insert; k--)
+                    {
+                        array[k] = array[k - 1];
+                    }
+                    array[insert] = temp;
+                }
             }
         }
     }
