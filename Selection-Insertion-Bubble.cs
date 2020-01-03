@@ -45,7 +45,7 @@ namespace SortSpace
 
         public static void InsertionSortStep(int[] array, int step, int i)
         {
-            if (i >= 0 && i < array.Length && array != null)
+             if (i >= 0 && i < array.Length && array != null)
             {
                     int iteration = i;
                     int k = 0;
@@ -53,9 +53,11 @@ namespace SortSpace
                     while (iteration < array.Length)
                     {
                         temp[k++] = (array[iteration]);
+                    
                         iteration += step;
                     }
-                    while (BubbleSortStep(temp));
+
+                    while (!BubbleSortStep(temp));
 
                     iteration = i;
                     for (int n = 0; n < temp.Length; n++)
