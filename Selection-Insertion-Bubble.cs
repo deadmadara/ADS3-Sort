@@ -23,29 +23,9 @@ namespace SortSpace
             }
         }
 
-        public static bool BubbleSortStep(int[] array)
-        {
-            int count = 0;
-            if (array != null)
-            {
-                for (int k = 0; k < array.Length - 1; k++)
-                {
-                    if (array[k] > array[k + 1])
-                    {
-                        int temp = array[k];
-                        array[k] = array[k + 1];
-                        array[k + 1] = temp;
-                        count++;
-                    }
-                }
-                if (count == 0) return true;
-            }
-            return false;
-        }
-
         public static void InsertionSortStep(int[] array, int step, int i)
         {
-             if (i >= 0 && i < array.Length && array != null)
+            if (i >= 0 && i < array.Length && array != null)
             {
                     int iteration = i;
                     int k = 0;
@@ -56,10 +36,26 @@ namespace SortSpace
                     
                         iteration += step;
                     }
+               
+                for (int n = 1; n < temp.Length; n++)
+                    {
+                    int ins = n;
+                    for (int m = n - 1; m >= 0; m--)
+                    {
+                        if (temp[n] < temp[m])
+                        {
+                            ins = m;
+                        }
+                    }
+                    int tempvar = temp[n];
+                    for (int m = n; m > ins; m--)
+                    {
+                        temp[m] = temp[m - 1];
+                    }
+                    temp[ins] = tempvar;
+                    }
 
-                    while (!BubbleSortStep(temp));
-
-                    iteration = i;
+                iteration = i;
                     for (int n = 0; n < temp.Length; n++)
                     {
                         array[iteration] = temp[n];
@@ -67,5 +63,6 @@ namespace SortSpace
                     } 
             }
         }
+   
     }
 }
