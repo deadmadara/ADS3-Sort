@@ -49,13 +49,19 @@ namespace SortSpace
             {
                 if (step != 1)
                 {
-                    int n = i + step;
-                    if (n > array.Length - 1) n = n % array.Length;
-                    if (array[n] < array[i])
+                    int iteration = i;
+                    List<int> temp = new List<int>();
+                    while (iteration < array.Length)
                     {
-                        int temp = array[i];
-                        array[i] = array[n];
-                        array[n] = temp;
+                        temp.Add(array[iteration]);
+                        iteration += step;
+                    }
+                    temp.Sort();
+                    iteration = i;
+                    for (int k = 0; k < temp.Count; k++)
+                    {
+                        array[iteration] = temp[k];
+                        iteration += step;
                     }
                 }
                 else
