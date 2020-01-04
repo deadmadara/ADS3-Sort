@@ -63,6 +63,25 @@ namespace SortSpace
                     } 
             }
         }
+
+        public static List<int> KnuthSequence(int array_size)
+        {
+            List<int> seq = new List<int>();
+            int n = 1;
+            while (n < array_size)
+            {
+                seq.Add(n);
+                n = 3 * n + 1;
+            }
+
+            for (int i = 0; i < seq.Count / 2; i++)
+            {
+                int temp = seq[i];
+                seq[i] = seq[seq.Count - 1 - i];
+                seq[seq.Count - 1 - i] = temp;
+            }
+            return seq;
+        }
    
     }
 }
