@@ -86,5 +86,17 @@ namespace SortSpace
             }
             return seq;
         }
+        
+           public static void ShellSort(int[] array)
+        {
+            List<int> seq = KnuthSequence(array.Length);
+            for (int i = 0; i < seq.Count; i++)
+            {
+                for (int j = 0; j < array.Length / seq[i] + 1; j++)
+                {
+                    InsertionSortStep(array, seq[i], j);
+                }
+            }
+        }
     }
 }
