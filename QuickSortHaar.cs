@@ -36,5 +36,15 @@ namespace SortSpace
             }
             return pos;
         }
+        
+       public static void QuickSort(int[] array, int left, int right)
+        {
+            if (left < right)
+            {
+                    int N = ArrayChunk(array);
+                    QuickSort(array, left, N - 1);
+                    QuickSort(array, N + 1, right);
+            }
+        }
     }
 }
