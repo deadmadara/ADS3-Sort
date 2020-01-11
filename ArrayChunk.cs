@@ -14,6 +14,7 @@ namespace SortSpace
 
             while (i1 <= i2 )
             {
+                N = M[pos];
                 while (M[i1] < N) i1++;
                 while (M[i2] > N) i2--;
                 if (i1 == i2 - 1 && M[i1] > M[i2])
@@ -28,7 +29,6 @@ namespace SortSpace
                 {
                     if (i1 == pos) pos = i2;
                     else if (i2 == pos) pos = i1;
-                    N = M[pos];
                     int temp1 = M[i1]; 
                     M[i1] = M[i2];
                     M[i2] = temp1;
