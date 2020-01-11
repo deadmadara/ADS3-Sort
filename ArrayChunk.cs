@@ -26,8 +26,8 @@ namespace SortSpace
                 else if (i1 == i2 || (i1 == i2 - 1 && M[i1] < M[i2])) return pos;
                 else
                 {
-                    if (i1 == pos) pos++;
-                    if (i2 == pos) pos--;
+                    if (i1 == pos) pos = i2;
+                    else if (i2 == pos) pos = i1;
                     N = M[pos];
                     int temp1 = M[i1]; 
                     M[i1] = M[i2];
