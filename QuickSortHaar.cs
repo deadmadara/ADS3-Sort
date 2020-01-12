@@ -37,13 +37,33 @@ namespace SortSpace
             return pos;
         }
         
-       public static void QuickSort(int[] array, int left, int right)
+        public static int ArrayChunkPartition(int[] array, int start, int end)
         {
-            if (left < right)
+            int marker = start;
+            for (int i = start; i <= end; i++)
             {
-                    int N = ArrayChunk(array);
-                    QuickSort(array, left, N - 1);
-                    QuickSort(array, N + 1, right);
+                if (array[i] <= array[end])
+                {
+                    int temp = array[marker]; // swap
+                    array[marker] = array[i];
+                    array[i] = temp;
+                    marker += 1;
+                }
+            }
+            return marker - 1;
+        }
+        
+        public static void QuickSort(int[] array, int left, int right)
+        {
+            if (left >= right)
+            {
+                return;
+            }
+            else
+            {
+                int N = ArrayChunkPartition(array, left, right);
+                QuickSort(array, left, N - 1);
+                QuickSort(array, N + 1, right);
             }
         }
     }
