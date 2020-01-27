@@ -73,5 +73,4 @@ namespace SortSpace
             return res;
         }
     }
-    }
 }
