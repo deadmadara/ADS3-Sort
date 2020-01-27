@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace SortSpace
@@ -107,6 +107,14 @@ namespace SortSpace
 
         public HeapSort (int[] array)
         {
+            HeapObject = new Heap();
+            int pow = 1;
+            while (array.Length > pow)
+            {
+                pow *= 2;
+            }
+
+            HeapObject.HeapArray = new int[pow*2 - 1];
             for (int i = 0; i < array.Length; i++)
             {
                 HeapObject.Add(array[i]);
