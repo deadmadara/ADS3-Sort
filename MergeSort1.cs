@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace SortSpace
@@ -47,7 +47,7 @@ namespace SortSpace
         }
 
         //сортировка слиянием
-                static int[] MergeSortLH(int[] array, int lowIndex, int highIndex)
+        static int[] MergeSortLH(int[] array, int lowIndex, int highIndex)
         {
             if (lowIndex < highIndex)
             {
@@ -60,14 +60,14 @@ namespace SortSpace
             return array;
         }
 
- public static List<int> MergeSort(List<int> array)
+        public static List<int> MergeSort(List<int> array)
         {
             int[] arr = new int[array.Count];
             for (int i = 0; i < array.Count; i++)
             {
                 arr[i] = array[i];
             }
-            int[] buff = MergeSortLH(arr, 0, array.Count);
+            int[] buff = MergeSortLH(arr, 0, arr.Length - 1);
             List<int> res = new List<int>();
             for (int i = 0; i < buff.Length; i++) res.Add(buff[i]);
             return res;
