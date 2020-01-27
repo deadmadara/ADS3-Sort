@@ -60,12 +60,18 @@ namespace SortSpace
             return array;
         }
 
- public static List<int> MergeSort(int[] array)
+ public static List<int> MergeSort(List<int> array)
         {
-            int[] buff = MergeSortLH(array, 0, array.Length - 1);
+            int[] arr = new int[array.Count];
+            for (int i = 0; i < array.Count; i++)
+            {
+                arr[i] = array[i];
+            }
+            int[] buff = MergeSortLH(arr, 0, array.Count);
             List<int> res = new List<int>();
             for (int i = 0; i < buff.Length; i++) res.Add(buff[i]);
             return res;
         }
+    }
     }
 }
