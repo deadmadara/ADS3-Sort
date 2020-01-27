@@ -47,13 +47,13 @@ namespace SortSpace
         }
 
         //сортировка слиянием
-        static int[] MergeSort(int[] array, int lowIndex, int highIndex)
+                static int[] MergeSortLH(int[] array, int lowIndex, int highIndex)
         {
             if (lowIndex < highIndex)
             {
                 var middleIndex = (lowIndex + highIndex) / 2;
-                MergeSort(array, lowIndex, middleIndex);
-                MergeSort(array, middleIndex + 1, highIndex);
+                MergeSortLH(array, lowIndex, middleIndex);
+                MergeSortLH(array, middleIndex + 1, highIndex);
                 Merge(array, lowIndex, middleIndex, highIndex);
             }
 
@@ -62,7 +62,7 @@ namespace SortSpace
 
  public static List<int> MergeSort(int[] array)
         {
-            int[] buff = MergeSort(array, 0, array.Length - 1);
+            int[] buff = MergeSortLH(array, 0, array.Length - 1);
             List<int> res = new List<int>();
             for (int i = 0; i < buff.Length; i++) res.Add(buff[i]);
             return res;
