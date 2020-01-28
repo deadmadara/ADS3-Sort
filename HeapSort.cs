@@ -95,9 +95,10 @@ namespace SortSpace
 
         public void WriteOut()
         {
+            Console.WriteLine("heap: ");
             for (int i = 0; i < HeapArray.Length; i++)
             {
-                Console.WriteLine(HeapArray[i]);
+                Console.Write(HeapArray[i] + " ");
             }
         }
     }
@@ -108,13 +109,14 @@ namespace SortSpace
         public HeapSort (int[] array)
         {
             HeapObject = new Heap();
-            int pow = 1;
-            while (array.Length > pow)
+            int pow = 1; int k = 0;
+            while (k < array.Length)
             {
                 pow *= 2;
+                k++;
             }
 
-            HeapObject.HeapArray = new int[pow*2 - 1];
+            HeapObject.HeapArray = new int[pow - 1];
             for (int i = 0; i < array.Length; i++)
             {
                 HeapObject.Add(array[i]);
