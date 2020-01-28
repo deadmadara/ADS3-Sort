@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace SortSpace
@@ -25,7 +25,7 @@ namespace SortSpace
                 int s2 = (int)Char.GetNumericValue(s[2]);
                 if (s0 > 96 && s0 < 105 && s1 != -1 && s2 != -1)
                 {
-                    return (s0 - 97) * 100 + s1 + s2;
+                    return (s0 - 97) * 100 + s1 * 10 + s2;
                 }
             }
             return -1;
@@ -41,5 +41,14 @@ namespace SortSpace
             }
             return false;
         }
+
+        public void showoff()
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] != null) Console.Write(items[i] + " ");
+            }
+        }
+
     }
 }
