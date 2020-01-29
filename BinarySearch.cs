@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace SortSpace
@@ -13,6 +13,8 @@ namespace SortSpace
         {
             Left = 0;
             Right = arr.Length - 1;
+            found = false;
+            search = true;
         }
 
         public void Step(int N)
