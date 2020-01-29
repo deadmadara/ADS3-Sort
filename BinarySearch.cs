@@ -7,8 +7,8 @@ namespace SortSpace
     {
         public int Left;
         public int Right;
-        bool found;
-        bool search;
+        public bool found;
+        public bool search;
         public BinarySearch(int[] arr)
         {
             Left = 0;
@@ -19,34 +19,45 @@ namespace SortSpace
 
         public void Step(int N)
         {
-            found = false;
-            search = true;
-            if (Left == Right)
+            if (found == false || search == true)
             {
-                found = false;
-                search = false;
+                if (Left == Right)
+                {
+                    found = false;
+                    search = false;
+                }
+                else
+                {
+                    int Center = (Left + Right) / 2;
+                    if (N == Center)
+                    {
+                        found = true;
+                        search = false;
+                    }
+                    else if (N < Center)
+                    {
+                        Right = Center - 1;
+                    }
+                    else if (N > Center)
+                    {
+                        Left = Center + 1;
+                    }
+                }
             }
-            int Center = (Left + Right) / 2;
-                if (N == Center)
-                {
-                found = true;
-                search = false;
-                }
-                else if (N < Center)
-                {
-                Right = Center - 1;
-                }
-                else if (N > Center)
-                {
-                Left = Center + 1;
-                }
-            }
+        }
 
         public int GetResult()
         {
-            if (!found && !search) return -1;
-            else if (!found && search) return 0;
-            else return 1;
+            if (search == true)
+            {
+                return 0;
+            }
+            else 
+            {
+                if (found == true)
+                    return 1;
+                else return -1;
+            }
         }
     }
 }
