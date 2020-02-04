@@ -7,14 +7,17 @@ namespace SortSpace
     {
         public int Left;
         public int Right;
+        int[] arr;
         public bool found;
         public bool search;
-        public BinarySearch(int[] arr)
+        public BinarySearch(int[] _arr)
         {
             Left = 0;
-            Right = arr.Length - 1;
+            Right = _arr.Length - 1;
             found = false;
             search = true;
+            arr = new int[_arr.Length];
+            Array.Copy(_arr, arr, _arr.Length);
         }
 
         public void Step(int N)
@@ -29,16 +32,16 @@ namespace SortSpace
                 else
                 {
                     int Center = (Left + Right) / 2;
-                    if (N == Center)
+                    if (arr[Center] == N)
                     {
                         found = true;
                         search = false;
                     }
-                    else if (N < Center)
+                    else if (N < arr[Center])
                     {
                         Right = Center - 1;
                     }
-                    else if (N > Center)
+                    else if (N > arr[Center])
                     {
                         Left = Center + 1;
                     }
