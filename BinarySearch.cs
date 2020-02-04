@@ -20,31 +20,25 @@ namespace SortSpace
 
         public void Step (int N)
         {
-           if (find == 0)
+            if (find == 0)
             {
+                int Center = (Left + Right) / 2;
+                if (N < arr[Center])
+                {
+                    Right = Center - 1;
+                }
+                else if (N > arr[Center])
+                {
+                    Left = Center + 1;
+                }
                 if (Left == Right || Left < 0 || Right < 0)
                 {
                     find = -1;
                 }
                 else
                 {
-                    int Center = (Left + Right) / 2;
-                    if (N < arr[Center])
-                    {
-                        Right = Center - 1;
-                        Center = (Left + Right) / 2;
-                        if (arr[Center] == N) find = 1;
-                    }
-                    else if (N > arr[Center])
-                    {
-                        Left = Center + 1;
-                        Center = (Left + Right) / 2;
-                        if (arr[Center] == N) find = 1;
-                    }
-                    else if (arr[Center] == N)
-                    {
-                        find = 1;
-                    }
+                Center = (Left + Right) / 2;
+                if (arr[Center] == N) find = 1;
                 }
             }
         }
