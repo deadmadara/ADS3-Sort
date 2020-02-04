@@ -8,34 +8,30 @@ namespace SortSpace
         public int Left;
         public int Right;
         int[] arr;
-        public bool found;
-        public bool search;
+        int find;
         public BinarySearch(int[] _arr)
         {
+            find = 0;
             Left = 0;
             Right = _arr.Length - 1;
-            found = false;
-            search = true;
             arr = new int[_arr.Length];
             Array.Copy(_arr, arr, _arr.Length);
         }
 
-        public void Step(int N)
+        public void Step (int N)
         {
-            if (found == false || search == true)
+            if (find == 0)
             {
                 if (Left == Right)
                 {
-                    found = false;
-                    search = false;
+                    find = -1;
                 }
                 else
                 {
                     int Center = (Left + Right) / 2;
                     if (arr[Center] == N)
                     {
-                        found = true;
-                        search = false;
+                        find = 1;
                     }
                     else if (N < arr[Center])
                     {
@@ -51,16 +47,7 @@ namespace SortSpace
 
         public int GetResult()
         {
-            if (search == true)
-            {
-                return 0;
-            }
-            else 
-            {
-                if (found == true)
-                    return 1;
-                else return -1;
-            }
+            return find;
         }
     }
 }
