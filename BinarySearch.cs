@@ -22,23 +22,31 @@ namespace SortSpace
         {
             if (find == 0)
             {
+
                 int Center = (Left + Right) / 2;
-                if (N < arr[Center])
+                if (arr[Center] == N)
                 {
-                    Right = Center - 1;
-                }
-                else if (N > arr[Center])
-                {
-                    Left = Center + 1;
-                }
-                if (Left == Right || Left < 0 || Right < 0)
-                {
-                    find = -1;
+                    find = 1;
                 }
                 else
                 {
-                Center = (Left + Right) / 2;
-                if (arr[Center] == N) find = 1;
+                    if (Left == Right || Left < 0 || Right < 0 || Right > arr.Length)
+                    {
+                        find = -1;
+                    }
+                    else
+                    {
+                        if (N < arr[Center])
+                        {
+                            Right = Center - 1;
+                        }
+                        else if (N > arr[Center])
+                        {
+                            Left = Center + 1;
+                        }
+                        Center = (Left + Right) / 2;
+                        if (arr[Center] == N) find = 1;
+                    }
                 }
             }
         }
