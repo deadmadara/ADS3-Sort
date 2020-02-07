@@ -18,7 +18,7 @@ namespace SortSpace
             Array.Copy(_arr, arr, _arr.Length);
         }
 
-         public void Step (int N)
+ public void Step (int N)
         {
             if (find == 0)
             {
@@ -42,11 +42,12 @@ namespace SortSpace
                     {
                         find = 1;
                     }
-                    else if (arr[Center + 1] == N)
+                    else if ( Center + 1 < arr.Length && arr[Center + 1] == N)
                     {
                         find = 1;
                     }
-                    else if (Left == Right || (Right - Left <= 1 && arr[Center] != N && arr[Center + 1] != N) || Right < 0)
+                    else if (Left == Right || Right < 0)
+                    //else if (Left == Right || (Right - Left <= 1 && arr[Center] != N && arr[Center + 1] != N) || Right < 0)
                     {
                         find = -1;
                     }
