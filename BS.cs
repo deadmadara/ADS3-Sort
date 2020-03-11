@@ -52,7 +52,7 @@ namespace SortSpace
                         {
                             flag = 1;
                         }
-                        else if (Left == Right)
+                        else if (Left == Right || Right - Left == 1)
                         {
                             flag = -1;
                         }
